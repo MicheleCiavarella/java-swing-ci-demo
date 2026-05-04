@@ -28,14 +28,17 @@ class AppGuiTest {
 
     @Test
     void shouldShowGreetingWhenUserClicksButton() {
-        window.textBox("nameField").enterText("Michele");
-        window.button("salutaButton").click();
+        window.textBox("nameField").setText("Michele");
+        window.button("salutaButton").requireEnabled().click();
+        window.robot().waitForIdle();
         window.label("resultLabel").requireText("Ciao Michele");
     }
 
     @Test
     void shouldShowGuestGreetingWhenInputIsEmpty() {
-        window.button("salutaButton").click();
+        window.textBox("nameField").setText("");
+        window.button("salutaButton").requireEnabled().click();
+        window.robot().waitForIdle();
         window.label("resultLabel").requireText("Ciao ospite");
     }
 }
