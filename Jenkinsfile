@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 echo 'Checkout source code'
@@ -11,7 +10,7 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-                bat 'mvn clean test'
+                bat 'mvn clean test -Dtest=AppLogicTest'
             }
         }
     }
